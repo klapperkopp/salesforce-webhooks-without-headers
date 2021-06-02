@@ -1,0 +1,20 @@
+{
+  "name": "sf-remove-webhook-header",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "toni.kuschan@vonage.com",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "js-sha256": "^0.9.0",
+    "jsonwebtoken": "^8.5.1",
+    "nforce": "^1.12.2",
+    "qs": "^6.7.0"
+  }
+}
