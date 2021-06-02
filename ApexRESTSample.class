@@ -1,0 +1,31 @@
+@RestResource(urlMapping='/NexmoTest')
+global with sharing class Nexmo_Webhook_TEST_Toni {
+
+    // this endpoint returns the message api message that you post to it
+    @HttpPost
+    global static void inboundMessage() {
+        Map<String, Object> params = (Map<String, Object>)JSON.deserializeUntyped(
+          RestContext.request.requestBody.toString()
+        );
+        RestContext.response.addHeader('Content-Type', 'application/json');
+        RestContext.response.responseBody = Blob.valueOf(JSON.serialize(new Response((String)params.get('message'), (String)params.get('mfrom'), (String)params.get('to'), (String)params.get('type'), (String)params.get('message_uuid'), (String)params.get('timestamp'))));
+    }
+    
+    public class Response {
+        public String message;
+        public String mfrom;
+        public String to;
+        public String type;
+        public String message_uuid;
+        public String timestamp;
+        
+        public Response(String message, String mfrom, String to, String type, String message_uuid, String timestamp) {
+            this.message = message;
+            this.mfrom = mfrom;
+            this.to = to;
+            this.type = type;
+            this.message_uuid = message_uuid;
+            this.timestamp = timestamp;
+        }
+    }
+}
